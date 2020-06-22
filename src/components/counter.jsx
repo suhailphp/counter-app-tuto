@@ -3,28 +3,30 @@ import React, { Component } from "react";
 class Counter extends Component {
   state = {
     count: 0,
-    tags: [],
   };
   render() {
     return (
       <React.Fragment>
-        <span style={{ fontSize: 15 }} class={this.getBadgeClass()}>
+        <span style={{ fontSize: 15 }} className={this.getBadgeClass()}>
           {this.formatCount()}
         </span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>
-          {this.state.tags.length === 0 && <p>there are no tags!</p>}
-          {this.state.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </React.Fragment>
     );
   }
 
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
   getBadgeClass() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count == 0 ? "warning" : "primary";
+    classes += this.state.count === 0 ? "warning" : "primary";
     return classes;
   }
 
