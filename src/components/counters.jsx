@@ -14,11 +14,9 @@ class Counters extends Component {
     return (
       <div>
         {this.state.counters.map((counter) => (
-          <Counter
-            value={counter.value}
-            selected="true"
-            key={counter.id}
-          ></Counter>
+          <Counter value={counter.value} selected="true" key={counter.id}>
+            <h4>Movie ID is #{counter.id}</h4>
+          </Counter>
         ))}
       </div>
     );
